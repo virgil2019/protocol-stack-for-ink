@@ -1,5 +1,5 @@
 [package]
-name = "callee"
+name = "cross_chain"
 version = "0.1.0"
 authors = ["[your_name] <[your_email]>"]
 edition = "2021"
@@ -7,20 +7,19 @@ edition = "2021"
 [dependencies]
 ink = { version = "4.0.0-alpha.3", default-features = false }
 
-# ink_primitives = { version = "4.0.0-alpha.3", default-features = false }
-# ink_storage = { version = "4.0.0-alpha.3", default-features = false }
-
-scale = { package = "parity-scale-codec", version = "3.2.1", default-features = false, features = ["derive"] }
-scale-info = { version = "2.2.0", default-features = false, features = ["derive", "serde", "decode"] }
+scale = { package = "parity-scale-codec", version = "3", default-features = false, features = ["derive"] }
+scale-info = { version = "2", default-features = false, features = ["derive", "serde", "decode"] }
 
 payload = { path = "../../../message-ink/payload/", default-features = false, features = ["ink-as-dependency"] }
 
 [lib]
-name = "callee"
+name = "cross_chain"
 path = "lib.rs"
 crate-type = [
 	# Used for normal contract Wasm blobs.
 	"cdylib",
+    # Used for ABI generation.
+    "rlib",
 ]
 
 [features]
